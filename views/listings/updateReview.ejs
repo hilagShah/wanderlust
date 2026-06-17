@@ -1,0 +1,47 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="edit-listing-container">
+
+    
+        <h4>Edit Review</h4>
+
+        <form method="POST" action="/listings/<%= id %>/reviews/<%= reviewId %>?_method=PUT">
+
+            <div class="mb-3">
+                <label for="rating" class="form-label">
+                    Rating
+                </label>
+                        
+                <input
+                    type="range"
+                    class="form-range"
+                    name="review[rating]"
+                    id="rating"
+                    min="1"
+                    max="5"
+                    value="3"
+                >
+                    </div>
+                    
+                <div class="mb-3">
+                    <label for="comment" class="form-label">
+                        Comment
+                    </label>
+                
+                    <textarea
+                        class="form-control"
+                        name="review[comment]"
+                        id="comment"
+                        rows="5"
+                        placeholder="Type here..."
+                        required
+                    ></textarea>
+                </div>
+            
+                <button type="submit" class="btn btn-danger">
+                    Submit
+                </button>
+            
+            </form>
+
+</div>

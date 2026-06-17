@@ -1,0 +1,104 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="edit-listing-container">
+
+    <h1 class="edit-listing-heading">
+        Edit Listing
+    </h1>
+
+    <form
+        class="edit-listing-form"
+        method="POST"
+        action="/listings/<%= listing._id %>?_method=PUT"
+        enctype="multipart/form-data"
+    >
+
+        <div class="edit-form-group">
+            <label class="edit-form-label">Title</label>
+
+            <input
+                class="edit-form-input"
+                type="text"
+                name="listing[title]"
+                value="<%= listing.title %>"
+                required
+            >
+        </div>
+
+        <div class="edit-form-group">
+            <label class="edit-form-label">Description</label>
+
+            <textarea
+                class="edit-form-textarea"
+                name="listing[description]"
+                required
+            ><%= listing.description %></textarea>
+        </div>
+    <div class="mb-4">
+    <h4 class="mb-3">Original Image</h4>
+
+    <div class="card shadow-sm border-0">
+        <img
+            src="<%= originalUrl %>"
+            alt="Listing Image"
+            class="card-img-top img-fluid rounded"
+        >
+        </div>
+    </div>
+        <div class="edit-form-group">
+            <label class="edit-form-label">Image URL</label>
+
+            <input
+                class="edit-form-input"
+                type="file"
+                name="listing[image]"
+                value="<%= listing.image.url %>"
+            >
+        </div>
+
+        <div class="edit-form-group">
+            <label class="edit-form-label">Price</label>
+
+            <input
+                class="edit-form-input"
+                type="number"
+                name="listing[price]"
+                value="<%= listing.price %>"
+                required
+            >
+        </div>
+
+        <div class="edit-form-group">
+            <label class="edit-form-label">Location</label>
+
+            <input
+                class="edit-form-input"
+                type="text"
+                name="listing[location]"
+                value="<%= listing.location %>"
+                required
+            >
+        </div>
+
+        <div class="edit-form-group">
+            <label class="edit-form-label">Country</label>
+
+            <input
+                class="edit-form-input"
+                type="text"
+                name="listing[country]"
+                value="<%= listing.country %>"
+                required
+            >
+        </div>
+
+        <button
+            class="update-listing-btn"
+            type="submit"
+        >
+            Update Listing
+        </button>
+
+    </form>
+
+</div>

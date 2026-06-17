@@ -1,0 +1,190 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1><%=listing.title%></h1>
+    <h3>Description : <%=listing.description%></h3>
+    <h3>Price : <%=listing.price%></h3>
+    <h3>Location : <%=listing.location%></h3>
+    <h3>Country : <%=listing.country%></h3>
+
+    <form method="get" action="/listings/update/<%=listing.id%>">
+        <button>Edit details</button>
+    </form>
+     <form method="post" action="/listings/<%=listing.id%>?_method=DELETE">
+        <button>Delete Listing</button>
+    </form>
+</body>
+</html> -->
+
+<% layout("/layouts/boilerplate.ejs") %>
+
+<div class="show-listing-container">
+
+    <div class="show-listing-card">
+
+        <h1 class="show-listing-title">
+            <%= listing.title %>
+        </h1>
+
+        <img
+            src="<%= listing.image.url %>"
+            alt="<%= listing.title %>"
+            class="show-listing-image"
+        >
+
+        <div class="show-listing-details">
+
+            <p class="show-listing-info">
+                <strong>Owner:</strong>
+                <%= listing.owner.username %>
+            </p>
+
+            <p class="show-listing-info">
+                <strong>Description:</strong>
+                <%= listing.description %>
+            </p>
+
+            <p class="show-listing-info">
+                <strong>Price:</strong>
+                ₹<%= listing.price.toLocaleString() %>
+            </p>
+
+            <p class="show-listing-info">
+                <strong>Location:</strong>
+                <%= listing.location %>
+            </p>
+
+            <p class="show-listing-info">
+                <strong>Country:</strong>
+                <%= listing.country %>
+            </p>
+
+        </div>
+        <% if(currUser && currUser._id.equals(listing.owner._id)) { %>
+        <div class="show-listing-btn-group">
+
+            <form
+                method="get"
+                action="/listings/update/<%= listing.id %>"
+            >
+                <button class="edit-listing-btn">
+                    Edit Details
+                </button>
+            </form>
+
+            <form
+                method="post"
+                action="/listings/<%= listing.id %>?_method=DELETE"
+                onsubmit="return confirm('Are you sure you want to delete this listing?');"
+            >
+                <button class="delete-listing-btn">
+                    Delete Listing
+                </button>
+            </form>
+        </div>
+        <% } %>
+        <div class="row mt-4">
+    <% if(currUser) { %>
+    <div class="col-md-6 offset-md-3">
+
+        <h4>Leave a Review</h4>
+
+        <form method="POST" action="/listings/<%= listing.id %>/reviews">
+
+            <div class="mb-3">
+                <label for="rating" class="form-label">
+                    Rating
+                </label>
+                        
+                <input
+                    type="range"
+                    class="form-range"
+                    name="review[rating]"
+                    id="rating"
+                    min="1"
+                    max="5"
+                    value="3"
+                >
+                        </div>
+                    
+                        <div class="mb-3">
+                            <label for="comment" class="form-label">
+                                Comment
+                            </label>
+                        
+                            <textarea
+                                class="form-control"
+                                name="review[comment]"
+                                id="comment"
+                                rows="5"
+                                placeholder="Type here..."
+                                required
+                            ></textarea>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-danger">
+                            Submit
+                        </button>
+                    
+                    </form>
+                
+                </div>
+            <% } %>
+            </div>
+
+<h3 class="mt-5">Reviews</h3>
+        <!-- <h3>Reviews</h3> -->
+
+        <% for(let review of listing.reviews) { %>
+        
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p>
+                        Author : <%= review.author.username %>
+                    </p>
+                    <p class="review-stars">
+                        <% for(let i = 1; i <= 5; i++) { %>
+                        
+                            <% if(i <= review.rating) { %>
+                                <i class="fa-solid fa-star"></i>
+                            <% } else { %>
+                                <i class="fa-regular fa-star"></i>
+                            <% } %>
+                            
+                        <% } %>
+                    </p>
+                
+                    <p>
+                        <%= review.comment %>
+                    </p>
+
+                    <% if(currUser && review.author && currUser._id.equals(review.author._id)) { %>
+                    <div class="d-flex gap-2 mt-3">
+
+                        <form method="GET" action="/listings/<%= listing.id %>/reviews/<%= review._id %>">
+                            <button type="submit" class="btn btn-outline-primary btn-sm">
+                                <i class="fa-solid fa-pen-to-square"></i> Edit
+                            </button>
+                        </form>
+                    
+                        <form method="POST" action="/listings/<%= listing.id %>/reviews/<%= review._id %>?_method=DELETE">
+                            <button type="submit" class="btn btn-outline-danger btn-sm">
+                                <i class="fa-solid fa-trash"></i> Delete
+                            </button>
+                        </form>
+
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+        
+        <% } %>      
+    </div>
+
+</div>
+

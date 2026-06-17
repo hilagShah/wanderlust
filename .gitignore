@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+.env.local
+.env.*
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Coverage
+coverage/
+
+# Build Folders
+dist/
+build/
+
+# Temporary Files
+tmp/
+temp/
+
+# Cache
+.cache/
+
+# OS Generated Files
+Thumbs.db
+
+# MongoDB
+*.mongodb
+
+# Parcel/Vite
+.parcel-cache/
+.vite/
+
+# Runtime Data
+pids
+*.pid
+*.seed
+*.pid.lock

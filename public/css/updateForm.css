@@ -1,0 +1,84 @@
+.edit-listing-container {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+.edit-listing-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.edit-listing-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.edit-form-group {
+    margin-bottom: 1.25rem;
+}
+
+.edit-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.edit-form-input,
+.edit-form-textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.edit-form-textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.edit-form-input:focus,
+.edit-form-textarea:focus {
+    outline: none;
+    border-color: #ff385c;
+    box-shadow: 0 0 0 4px rgba(255, 56, 92, 0.15);
+}
+
+.update-listing-btn {
+    width: 100%;
+    border: none;
+    background-color: #ff385c;
+    color: white;
+    padding: 0.9rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.update-listing-btn:hover {
+    background-color: #e61e4d;
+    transform: translateY(-2px);
+}
+
+.update-listing-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .edit-listing-container {
+        padding: 1rem;
+    }
+
+    .edit-listing-form {
+        padding: 1.5rem;
+    }
+}

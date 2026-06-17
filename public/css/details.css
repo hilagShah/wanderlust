@@ -1,0 +1,94 @@
+.show-listing-container {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.show-listing-card {
+    width: 100%;
+    max-width: 850px;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.show-listing-image {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+.show-listing-title {
+    padding: 1.5rem;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #222;
+}
+
+.show-listing-details {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.show-listing-info {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    color: #444;
+    line-height: 1.6;
+}
+
+.show-listing-btn-group {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.show-listing-btn-group form {
+    flex: 1;
+}
+
+.edit-listing-btn,
+.delete-listing-btn {
+    width: 100%;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.edit-listing-btn {
+    background-color: #ff385c;
+    color: white;
+}
+
+.edit-listing-btn:hover {
+    background-color: #e61e4d;
+}
+
+.delete-listing-btn {
+    background-color: #343a40;
+    color: white;
+}
+
+.delete-listing-btn:hover {
+    background-color: #212529;
+}
+
+@media (max-width: 768px) {
+
+    .show-listing-image {
+        height: 250px;
+    }
+
+    .show-listing-title {
+        font-size: 1.5rem;
+    }
+
+    .show-listing-btn-group {
+        flex-direction: column;
+    }
+}

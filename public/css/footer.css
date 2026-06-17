@@ -1,0 +1,57 @@
+.wanderlust-footer {
+    background-color: #f7f7f7;
+    border-top: 1px solid #dddddd;
+
+    padding: 1rem 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    color: #222;
+    font-size: 0.95rem;
+}
+
+.footer-left,
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.footer-left a,
+.footer-right a {
+    text-decoration: none;
+    color: #222;
+    transition: color 0.2s ease;
+}
+
+.footer-left a:hover,
+.footer-right a:hover {
+    color: #ff385c;
+}
+
+.footer-dot {
+    color: #717171;
+}
+
+.footer-right i {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+
+    .wanderlust-footer {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    .footer-left,
+    .footer-right {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
