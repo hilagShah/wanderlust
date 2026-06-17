@@ -17,7 +17,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/users");
 const MONGO_URL = process.env.MONGO_URI;
-const MongoStore = require("mongo-session");
+const MongoStore = require("connect-mongo");
 
 // console.log(process.env.SECRET); // WE CAN ACCESS .env CREDEENTIAL BY USING process.env.KEY
 
@@ -38,20 +38,20 @@ main().then(() => {
     console.log(err);
 });
 
-store.on("error", () => {
-    console.log("ERROR IN MONGO SESSION STORE", err);
-});
+// const store = MongoStore.create({
+//     mongoUrl : MONGO_URL,
+//     crypto : {
+//         secret : process.env.SECRET,
+//     },
+//     touchAfter : 24 * 3600,
+// })
 
-const store = MongoStore.create({
-    mongoUrl : MONGO_URL,
-    crypto : {
-        secret : process.env.SECRET,
-    },
-    touchAfter : 24 * 3600,
-})
+// store.on("error", () => {
+//     console.log("ERROR IN MONGO SESSION STORE", err);
+// });
 //cookies setup
 const sessionOptions = {
-    store,
+    // store,
     secret : process.env.SECRET,
     resave : false,
     saveUninitialized : true,
@@ -62,10 +62,9 @@ const sessionOptions = {
     },
 }
 
-
-app.get("/" , async (req,res) => {
-    res.send("hello!!")
-});
+// app.get("/" , async (req,res) => {
+//     res.send("hello!!")
+// });
 
 //cookies setup
 app.use(session(sessionOptions));
