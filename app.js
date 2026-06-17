@@ -62,10 +62,6 @@ const sessionOptions = {
     },
 }
 
-// app.get("/" , async (req,res) => {
-//     res.send("hello!!")
-// });
-
 //cookies setup
 app.use(session(sessionOptions));
 app.use(flash()); // all routes should be written (on which flash has to be applied) after these lines of code.
@@ -88,6 +84,9 @@ app.use((req, res, next) => {
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.get("/" , async (req,res) => {
+    res.render("listings/home.ejs");
+});
 
 
 app.use((req, res) => {
