@@ -62,9 +62,9 @@
                             </p>
 
                             <p class="listing-price">
-                                ₹<%= listing.price.toLocaleString() %>
-                                <i class="tax-info">+18% GST</i>
-                            </p>
+                                ₹<%= listing.price  %>
+                                <i class="tax-info">+ (<%= listing.price * 15 / 100 %>)</i>
+                            </p>  
 
                         </div>
 
