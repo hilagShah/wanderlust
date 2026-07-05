@@ -2,7 +2,7 @@ const Listing = require("../models/listings");
 const review = require("../models/review");
 
 module.exports.index = async (req,res) => {
-    let allListings = await Listing.find();
+    let allListings = await Listing.find().sort({ createdAt : -1 });
     res.render("listings/listings.ejs", { allListings });
 };
 
@@ -20,7 +20,16 @@ module.exports.updateListingForm = async (req,res) => {
 
 module.exports.getListingById = async (req,res) => {
     let { id } = req.params;
-    let listing = await Listing.findById(id).populate({path : "reviews", populate : { path : "author"}}).populate("owner");
+    let listing = await Listing.findById(id)
+    .populate({
+            path: "reviews",
+            options: {
+                sort: { createdAt: -1 }   // Newest first
+            },
+            populate: {
+                path: "author"
+            }
+        }).populate("owner");
     if(!listing) {
         req.flash("error", "No listings found!");
     }

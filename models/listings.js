@@ -26,14 +26,18 @@ const listingSchema = new Schema({
     type : Schema.Types.ObjectId,
     ref : "User",
   },
+  createdAt : {
+    type : Date,
+    default: Date.now,
+  }
 });
 
 // middleware to delete reviews as the listing is deleted
 listingSchema.post("findOneAndDelete" , async (listing) => {
   if(listing) {
-    await Review.deleteMany({ _id: { $in: listing.reviws }});
+    await Review.deleteMany({ _id: { $in: listing.reviews }});
   }
-});
+});  
 
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;
